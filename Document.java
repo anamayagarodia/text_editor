@@ -43,7 +43,7 @@ public class Document extends JFrame implements ActionListener
     saveI = new JMenuItem("Save"); //save option in file menu
     loadI = new JMenuItem("Load"); //load option in file menu
     newI = new JMenuItem("New"); //new option in file menu
-    fullScreenI = new JMenuItem("Enter Full Screen"); //fullscreen option in view menu
+    fullScreenI = new JMenuItem("Toggle Full Screen"); //fullscreen option in view menu
     toolBar = new JToolBar(); //toolBar
 
     ta.setLineWrap(true);
@@ -117,7 +117,7 @@ public class Document extends JFrame implements ActionListener
     saveI = new JMenuItem("Save"); //save option in file menu
     loadI = new JMenuItem("Load"); //load option in file menu
     newI = new JMenuItem("New"); //new option in file menu
-    fullScreenI = new JMenuItem("Enter Full Screen"); //fullscreen option in view menu
+    fullScreenI = new JMenuItem("Toggle Full Screen"); //fullscreen option in view menu
     toolBar = new JToolBar(); //toolBar
 
     ta.setLineWrap(true);
@@ -253,7 +253,7 @@ public class Document extends JFrame implements ActionListener
       }
       else
       {
-        // not yet implemented
+        System.err.print("Wrong Option");
       }
     }
     catch(Exception error)
