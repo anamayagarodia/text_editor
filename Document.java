@@ -17,7 +17,7 @@ public class Document extends JFrame implements ActionListener
     super("Document");
     setSize(600,600);
     setLocationRelativeTo(null);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     Container pane = getContentPane();
     pane.setLayout(new BorderLayout());
     
@@ -67,7 +67,8 @@ public class Document extends JFrame implements ActionListener
     copyI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
     pasteI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, ActionEvent.CTRL_MASK));
     selectI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
-    fullScreenI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, ActionEvent.CTRL_MASK & ActionEvent.ALT_MASK));
+    fullScreenI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, ActionEvent.ALT_MASK));
+    exitI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, ActionEvent.CTRL_MASK));
     
     pane.add(scpane, BorderLayout.CENTER);
     pane.add(toolBar,BorderLayout.SOUTH);
@@ -92,7 +93,7 @@ public class Document extends JFrame implements ActionListener
       // File f1 = new File("
     }
     else if (choice == exitI)
-      System.exit(0);
+      dispose();
     else if (choice == cutI)
       {
       pad = ta.getSelectedText();
@@ -104,13 +105,27 @@ public class Document extends JFrame implements ActionListener
       ta.insert(pad, ta.getCaretPosition());
     else if (choice == selectI)
       ta.selectAll();
-    else if (e.getSource() == fullScreenI)
+    else if (choice == fullScreenI)
       {
-        // not yet implememnted
+        if ((getExtendedState() & Frame.MAXIMIZED_BOTH) != 0) // checks if already full screen
+        {
+          setSize(600,600);
+          setLocationRelativeTo(null);
+          setUndecorated(false);
+        }
+        else
+        {
+          setExtendedState(JFrame.MAXIMIZED_BOTH); // full screen
+          setUndecorated(true);
+        }
+      }
+      else if (choice == newI)
+      {
+        new Document();
       }
       else
       {
-        new Document();
+        // not yet implemented
       }
   }
   public static void main(String[] args)
