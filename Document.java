@@ -6,9 +6,9 @@ public class Document extends JFrame implements ActionListener
 {
   private JTextArea ta;
   private int count;
-  private JmenuBar menuBar;
+  private JMenuBar menuBar;
   private JMenu fileM, editM, viewM;
-  PRIVATE JScrolPane scpane;
+  private JScrollPane scpane;
   private JMenuItem exitI,cutI,copyI,pasteI,selectI,saveI,loadI,newI,fullScreenI;
   private String pad;
   private JToolBar toolBar;
@@ -24,16 +24,16 @@ public class Document extends JFrame implements ActionListener
     count = 0;
     pad = " ";
     ta = new JTextArea(); //textarea
-    menuBar = new KMenuBar(); //menubar
+    menuBar = new JMenuBar(); //menubar
     fileM = new JMenu("File"); //file menu
     editM = new JMenu("Edit"); //edit menu
-    viewM = new Jmenu("View"); //view menu
+    viewM = new JMenu("View"); //view menu
     scpane = new JScrollPane(ta); //adding textarea to scrollpane
     exitI = new JMenuItem("Exit"); //exit option in file menu
     cutI = new JMenuItem("Cut"); //cut option in edit menu
     copyI = new JMenuItem("Copy"); //copy option in edit menu
     pasteI = new JMenuItem("Paste"); //paste option in edit menu
-    selectI = new KMenuItem("Select All"); //selectall option in edit menu
+    selectI = new JMenuItem("Select All"); //selectall option in edit menu
     saveI = new JMenuItem("Save"); //save option in file menu
     loadI = new JMenuItem("Load"); //load option in file menu
     newI = new JMenuItem("New"); //new option in file menu
@@ -43,9 +43,9 @@ public class Document extends JFrame implements ActionListener
     ta.setLineWrap(true);
     ta.setWrapStyleWord(true);
     
-    setJmenuBar(menuBar);
+    setJMenuBar(menuBar);
     menuBar.add(fileM);
-    menuBar.add(EditM);
+    menuBar.add(editM);
     menuBar.add(viewM);
     
     fileM.add(newI);
@@ -75,7 +75,7 @@ public class Document extends JFrame implements ActionListener
     newI.addActionListener(this);
     saveI.addActionListener(this);
     loadI.addActionListener(this);
-    exitI(addActionListener(this);
+    exitI.addActionListener(this);
     cutI.addActionListener(this);
     copyI.addActionListener(this);
     pasteI.addActionListener(this);
