@@ -174,6 +174,7 @@ public class Document extends JFrame implements ActionListener
       this.ta.insert((line+"\n"), ta.getCaretPosition());
       line = br.readLine();
     }
+    doc_name = file_name;
   }
   public void saveToFile() throws IOException
   {
@@ -248,8 +249,25 @@ public class Document extends JFrame implements ActionListener
       {
         System.out.print("Enter file name:");
         String file_name = in.next();
-        Document new_doc = new Document(file_name);
-        new_doc.loadFromFile(file_name);
+        if (doc_name.equals("Untitled"+(doc_count)+".txt"))
+        {
+          loadFromFile(file_name);
+          if ((getExtendedState() & Frame.MAXIMIZED_BOTH) != 0) // checks if already full screen
+          {
+            this.setTitle(doc_name);
+            setExtendedState(JFrame.MAXIMIZED_BOTH); // full screen
+            setUndecorated(true);
+          }
+          else
+          {
+            this.setTitle(doc_name);
+          }
+        }
+        else
+        {
+          Document new_doc = new Document(file_name);
+          new_doc.loadFromFile(file_name);
+        }
       }
       else
       {
